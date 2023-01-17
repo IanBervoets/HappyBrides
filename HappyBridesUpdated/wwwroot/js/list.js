@@ -7,6 +7,7 @@ $(document).ready(function(){
         $(this).parent().remove();
     })
 
+    //TODO: If functions dont get used multiple times in project just put code in method
     function moveUp($item) {
         $before = $item.prev();
         $item.insertBefore($before);
