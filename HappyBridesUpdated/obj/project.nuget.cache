@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "l7RFSUFMI3ov7BELXGBxETsyfnU/eRp+nJsbyHeXPOBBh5e21OT/Nu82j90XCL7bnUi4HZ1+ekMQtawM6jSG9Q==",
+  "success": true,
+  "projectFilePath": "/home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBridesUpdated/HappyBridesUpdated/HappyBridesUpdated.csproj",
+  "expectedPackageFiles": [
+    "/home/ian/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.2/microsoft.aspnetcore.app.ref.7.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
