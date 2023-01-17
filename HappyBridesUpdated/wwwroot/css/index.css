@@ -23,5 +23,9 @@
 .registerLink{
     text-align: center;
     font-size: 1.5rem;
+}
 
+.loginButton{
+    text-align: center;
+    font-size: 1.5rem;
 }
