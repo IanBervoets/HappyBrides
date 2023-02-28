@@ -8,14 +8,14 @@
     text-align: center;
 }
 
-.namen{
+.inputs{
     font-size: 1.25rem;
 }
 
-#bruidNaam{
+.form-control{
     margin-bottom: 1rem;
 }
 
-#bruidegomNaam{
-    margin-bottom: 5rem;
+.form-select{
+    margin-bottom: 1rem;
 }
