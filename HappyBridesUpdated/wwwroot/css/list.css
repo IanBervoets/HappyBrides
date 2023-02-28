@@ -4,17 +4,6 @@
     font-weight: bold;
 }
 
-.header{
-    background-color:lightgray;
-    text-align: center;
-    font-size: 4rem;
-    border: 0.25rem lightgray solid;
-    border-radius: 1.75rem;
-    color: black;
-    margin-bottom: 10rem;
-    font-weight: bold;
-}
-
 .newItem{
     margin-bottom: 7.5rem;
 }
