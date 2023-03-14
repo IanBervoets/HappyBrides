@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pMVEKcCf2ty/gA3BdXN/IDmqnicqsCCN238eHrJg4wM=",
+  "Hash": "ouvNSp/bZZ1b4xo176U99PbTf/UYIAmHhuNt8iHw3oc=",
   "Source": "HappyBridesUpdated",
   "BasePath": "_content/HappyBridesUpdated",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/home/ian/Documents/School/Jaar 2'/Periode 3/HappyBrides/HappyBridesUpdated/obj/Debug/net7.0/scopedcss/projectbundle/HappyBridesUpdated.bundle.scp.css"
+    },
+    {
+      "Identity": "/home/ian/Documents/School/Jaar 2'/Periode 3/HappyBrides/HappyBridesUpdated/wwwroot/css/Home.css",
+      "SourceId": "HappyBridesUpdated",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/ian/Documents/School/Jaar 2'/Periode 3/HappyBrides/HappyBridesUpdated/wwwroot/",
+      "BasePath": "_content/HappyBridesUpdated",
+      "RelativePath": "css/Home.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/Home.css"
     },
     {
       "Identity": "/home/ian/Documents/School/Jaar 2'/Periode 3/HappyBrides/HappyBridesUpdated/wwwroot/css/index.css",

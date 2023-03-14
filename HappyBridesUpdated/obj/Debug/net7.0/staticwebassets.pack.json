@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/HappyBridesUpdated.bundle.scp.css"
     },
     {
+      "Id": "/home/ian/Documents/School/Jaar 2'/Periode 3/HappyBrides/HappyBridesUpdated/wwwroot/css/Home.css",
+      "PackagePath": "staticwebassets/css/Home.css"
+    },
+    {
       "Id": "/home/ian/Documents/School/Jaar 2'/Periode 3/HappyBrides/HappyBridesUpdated/wwwroot/css/index.css",
       "PackagePath": "staticwebassets/css/index.css"
     },
