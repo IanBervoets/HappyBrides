@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FGx12yka19SnhHphjDmh96GedIKvfyGhZKuyMLBGi7bvURsbVWwEAK46gIJhFaggUxhCfV9K7e+xIb3S6fwRKA==",
+  "dgSpecHash": "55CZmUiwwl1OUEfCT7Lj3VUpZQ6D4yBTXYakHQLHOwGjXkIplA4kOZd6nYjDD2jZbRnV6n3ICIripcpnGdRJpg==",
   "success": true,
-  "projectFilePath": "/home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBrides/HappyBridesUpdated/HappyBridesUpdated.csproj",
+  "projectFilePath": "/home/ian/Documents/School/Jaar 2'/Periode 3/HappyBrides/HappyBridesUpdated/HappyBridesUpdated.csproj",
   "expectedPackageFiles": [
     "/home/ian/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.3/microsoft.aspnetcore.app.ref.7.0.3.nupkg.sha512"
   ],
