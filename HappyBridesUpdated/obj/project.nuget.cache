@@ -1,17 +1,20 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "hjxWQpN7FTpmpTNG/mmYh3a3qbc3bKpXu9YljXoauM56YvA27o0uw6ZKj3g20a/MMHnsN+yU2zy/WAraOasVPQ==",
-=======
-  "dgSpecHash": "55CZmUiwwl1OUEfCT7Lj3VUpZQ6D4yBTXYakHQLHOwGjXkIplA4kOZd6nYjDD2jZbRnV6n3ICIripcpnGdRJpg==",
->>>>>>> 8b1497c8e8ad113ff41bfdc6491546c12edcb4cb
   "success": true,
-  "projectFilePath": "/home/ian/Documents/School/Jaar 2'/Periode 3/HappyBrides/HappyBridesUpdated/HappyBridesUpdated.csproj",
+  "projectFilePath": "/home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBrides/HappyBridesUpdated/HappyBridesUpdated.csproj",
   "expectedPackageFiles": [
     "/home/ian/.nuget/packages/dapper/2.0.123/dapper.2.0.123.nupkg.sha512",
     "/home/ian/.nuget/packages/microsoft.extensions.logging.abstractions/7.0.0/microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "/home/ian/.nuget/packages/mysqlconnector/2.3.0-beta.1/mysqlconnector.2.3.0-beta.1.nupkg.sha512",
     "/home/ian/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.3/microsoft.aspnetcore.app.ref.7.0.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file /home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBrides/HappyBridesUpdated/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

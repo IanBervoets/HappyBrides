@@ -176,11 +176,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ian/Documents/School/Jaar 2'/Periode 3/HappyBrides/HappyBridesUpdated/HappyBridesUpdated.csproj",
+      "projectUniqueName": "/home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBrides/HappyBridesUpdated/HappyBridesUpdated.csproj",
       "projectName": "HappyBridesUpdated",
-      "projectPath": "/home/ian/Documents/School/Jaar 2'/Periode 3/HappyBrides/HappyBridesUpdated/HappyBridesUpdated.csproj",
+      "projectPath": "/home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBrides/HappyBridesUpdated/HappyBridesUpdated.csproj",
       "packagesPath": "/home/ian/.nuget/packages/",
-      "outputPath": "/home/ian/Documents/School/Jaar 2'/Periode 3/HappyBrides/HappyBridesUpdated/obj/",
+      "outputPath": "/home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBrides/HappyBridesUpdated/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ian/.nuget/NuGet/NuGet.Config"
@@ -244,5 +244,13 @@
         "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.103/RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file /home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBrides/HappyBridesUpdated/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
