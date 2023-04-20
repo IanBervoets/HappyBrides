@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.9.4-MariaDB, for Linux (x86_64)
+-- MariaDB dump 10.19  Distrib 10.11.2-MariaDB, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: HappyBrides
+-- Host: localhost    Database: HappyBrides
 -- ------------------------------------------------------
--- Server version	10.9.4-MariaDB
+-- Server version	10.11.2-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-31 16:58:54
+-- Dump completed on 2023-04-20 21:52:40

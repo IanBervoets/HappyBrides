@@ -94,3 +94,4 @@
 /home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBrides/HappyBridesUpdated/bin/Debug/net7.0/Dapper.dll
 /home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBrides/HappyBridesUpdated/bin/Debug/net7.0/MySqlConnector.dll
 /home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBrides/HappyBridesUpdated/obj/Debug/net7.0/HappyBridesUpdated.csproj.CopyComplete
+/home/ian/Documents/School/Jaar 2/Periode 3/WebDev Jaar 1/HappyBrides/HappyBridesUpdated/bin/Debug/net7.0/Newtonsoft.Json.dll
