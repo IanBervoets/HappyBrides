@@ -490,5 +490,7 @@ fabric.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/rider,dotnetcore,
 
-/bin/*
-/obj/*
+*/bin
+bin
+*/obj
+obj

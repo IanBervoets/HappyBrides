@@ -1,36 +1,46 @@
 ﻿@page
 @model IndexModel
+
 @{
     ViewData["Title"] = "Home page";
 }
 
 <link rel="stylesheet" href="css/index.css">
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4 IDinput">
-            <label for="userID" class="IDinput">Username</label>
-            <input type="text" class="form-control" id="userID">
-        </div>
-        <div class="col-4"></div>
-    </div>
-    <div class="row">
+<form method="post">
+    <div class="container-fluid">
+        <div class="row">
             <div class="col-4"></div>
-            <div class="col-4 passWD">
-                <label for="passWD" class="passWD">Password</label>
-                <input type="password" class="form-control" id="passWD">
+            <div class="col-4 text-danger">@Model.msg</div>
+            <div class="col-4"></div>
+        </div>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4 IDinput">
+                    <label for="userID" class="IDinput">Email</label>
+                    <input type="text" asp-for="Email" class="form-control" id="userID">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="col-4"></div>
             </div>
-            <div class="col-4"></div>
-        </div>
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-2 loginButton">    
-            <a href="Home" class="btn btn-info btn-lg" role="button">Login here</a>
-        </div>
-        <div class="col-2 registerLink">    
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4 passWD">
+                    <label for="passWD" class="passWD">Password</label>
+                    <input type="password" asp-for="Password" class="form-control" id="passWD">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-2 loginButton">
+                    <button class="btn btn-info btn-lg" type="submit">Login here</button>
+                </div>
+                <div class="col-2 registerLink">
                     <a href="/register" class="btn btn-info btn-lg" role="button">Register here</a>
                 </div>
-        <div class="col-4"></div>
-    </div>
-</div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+</form>
