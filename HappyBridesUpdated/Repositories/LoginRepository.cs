@@ -29,8 +29,15 @@ public class LoginRepository
             param: new { email, password });
         user.Name = connection.QuerySingle<string>("SELECT name FROM Users WHERE email = @email AND password = @password",
             param: new { email, password });
-        user.IsBride = connection.QuerySingle<bool>("SELECT isBride FROM Users WHERE email = @email AND password = @password",
-            param: new { email, password });
+        if (connection.QuerySingle<int>("SELECT isBride FROM Users WHERE email = @email AND password = @password",
+                param: new { email, password }) == 1)
+        {
+            user.IsBride = true;
+        }
+        else
+        {
+            user.IsBride = false;
+        }
         user.KeyString = connection.QuerySingle<string>("SELECT keyString FROM Users WHERE email = @email AND password = @password",
             param: new { email, password });
         return user;        

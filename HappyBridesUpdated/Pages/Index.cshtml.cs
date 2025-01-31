@@ -30,7 +30,7 @@ public class IndexModel : PageModel
         {
             User user = _loginRepository.GetUser(Email, Password);
             
-            HttpContext.Session.SetString("Id", JsonConvert.SerializeObject(user.Id));
+            HttpContext.Session.SetString("ID", JsonConvert.SerializeObject(user.Id));
             if (user.IsBride)
             {
                 HttpContext.Session.SetString("IsBride", "true");

@@ -4,10 +4,29 @@ namespace HappyBridesUpdated.Pages;
 
 public class Home : PageModel
 {
-    public string test;
+    public bool IsBride = false;
     
     public void OnGet()
-    { 
-        test = HttpContext.Session.GetString("isBride");
+    {
+        if (HttpContext.Session.GetString("ID") == null)
+        {
+            Response.Redirect("/Index");
+        }
+        
+        string test = HttpContext.Session.GetString("IsBride");
+        if (HttpContext.Session.GetString("IsBride") == "true")
+        {
+            IsBride = true;
+        }
+    }
+
+    public void OnPostGoToList()
+    {
+        Response.Redirect("/List");
+    }
+
+    public void OnPostStartList()
+    {
+        Response.Redirect("/List");
     }
 }
