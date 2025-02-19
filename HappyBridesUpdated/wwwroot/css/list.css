@@ -18,3 +18,9 @@
 .confirm{
     vertical-align: center;
 }
+
+.error{
+        margin-bottom: 1rem;
+        font-weight: bold;
+        background-color: #fff;
+}
