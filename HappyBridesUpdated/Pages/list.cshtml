@@ -1,75 +1,65 @@
 @page
-@model HappyBridesUpdated.Pages.list
-
-@{
-    
-}
+@using HappyBridesUpdated.Model
+@model HappyBridesUpdated.Pages.GiftsList
 
 <link rel="stylesheet" href="css/list.css"/>
-<script src="js/list.js"></script>
 
-@*
-<div class="modal fade" id="codeModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Uw unieke code</h4>
-                </div>
-                <div class="modal-body">
-                    <p>X4s4f5EE789p</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-info" type="button" data-bs-dismiss="modal">Oké</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    *@
-
-@if(Model.editing == false)
+@{
+    Model.IsBride = Model.CheckIsBride();
+}
+@if (Model.IsBride)
 {
 <div class="container-fluid">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4">
-                <form method="post">
-                <button class="btn btn-info btn-lg w-100 " asp-page-handler="Editing">Edit page</button>
-                </form>
-            </div>
-            <div class="col-4"></div>
-        </div>
-    </div>
-}
-
-@if (Model.editing)
-{
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4">
-                <form method="post">
-                    <button class="btn btn-info btn-lg w-100 edit" asp-page-handler="Save">Save List</button>
-                </form>
-            </div>
-            <div class="col-4"></div>
-        </div>
-    </div>
-    
-    <div class="container-fluid">
         <div class="row">
             <div class="col-3"></div>
             <span class="col-6 list">
                 <form method="post">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <input class="form-control" asp-for="Name" name="itemInput" type="text">
-                            <div class="text-danger error">@Model.Message</div>
-                            <button class="btn btn-info btn-lg confirm" asp-page-handler="Add" type="button">Add item</button>
+                            <input class="form-control" asp-for="Name" @*name="itemInput"*@ type="text">
+                            @*div class="text-danger error">@Model.Message</div>*@
+                            <button class="btn btn-info btn-lg confirm" asp-page-handler="Add" type="submit">Add item</button>
                         </li>
                     </ul>
                 </form>
             </span>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 list">
+                <ul class="list-group">
+                    @foreach (Gift gift in Model.Gifts)
+                    {
+                        <li class="list-group-item">@gift.Name<button class="btn icon delete" type="button"><i class="fas fa-times-circle"></i></button><button class="btn icon down" type="button"><i class="fas fa-arrow-alt-circle-down"></i></button><button type="button" class="btn icon up"><i class="fas fa-arrow-alt-circle-up"></i></button></li>
+                    }
+                </ul>
             </div>
             <div class="col-3"></div>
         </div>
+    </div>
 }
+else
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <ul>
+                    @foreach (Gift gift in Model.Gifts)
+                    {
+                        <li class="list-group-item">' + @gift.Name + '@*Add buying option*@</li>
+                    }
+                </ul>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+}
+
+
+
+@* <li class="list-group-item"><input class="form-control" name="itemInput" type="text"><button class="btn btn-info btn-lg confirm" type="button">Confirm item name</button><button class="btn icon delete" type="button"><i class="fas fa-times-circle"></i></button><button class="btn icon down" type="button"><i class="fas fa-arrow-alt-circle-down"></i></button><button type="button" class="btn icon up"><i class="fas fa-arrow-alt-circle-up"></i></button></li> *@
