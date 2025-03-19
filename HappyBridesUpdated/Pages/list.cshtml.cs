@@ -38,11 +38,19 @@ public class GiftsList : PageModel
     {
         if (ModelState.IsValid)
         {
-            string test = Name;
             Gift gift = new Gift();
-            gift.Name = test;
+            gift.Name = Name;
+            if (Gifts.Any())
+            {
+                gift.Priority = Gifts.Max(g => g.Priority) + 1;
+            }
+            else
+            {
+                gift.Priority = 1;
+            }
+            gift.UserId = int.Parse(HttpContext.Session.GetString("ID"));
+            _giftRepository.AddGift(gift);
             Gifts.Add(gift);
-            //_giftRepository.AddGift(gift);
         }
         else
         {

@@ -16,6 +16,6 @@ public class GiftRepository
     public void AddGift(Gift gift)
     {
         using var connection = _connectRepository.Connect();
-        connection.Execute("INSERT INTO Gift (idUsers, name, priority, isBought) VALUES (@idUsers, @name, @priority, @isBought)",param: new {gift.Id, gift.Name, gift.Priority, gift.IsBought});
+        connection.Execute("INSERT INTO Gifts (idUsers, name, priority, isBought) VALUES ((select idUsers from Users where idUsers = @userId), @name, @priority, @isBought)",param: new {@userId = gift.UserId, gift.Name, gift.Priority, gift.IsBought});
     }
 }
