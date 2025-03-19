@@ -4,8 +4,16 @@
 
 <link rel="stylesheet" href="css/list.css"/>
 
+<script>
+    function test(int){
+        let help;
+        help = int;
+    }
+</script>
+
 @{
     Model.IsBride = Model.CheckIsBride();
+    Model.LoadGifts();
 }
 @if (Model.IsBride)
 {
@@ -31,16 +39,19 @@
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6 list">
-                <ul class="list-group">
-                    @foreach (Gift gift in Model.Gifts)
-                    {
-                        <li class="list-group-item">@gift.Name<button class="btn icon delete" type="button"><i class="fas fa-times-circle"></i></button><button class="btn icon down" type="button"><i class="fas fa-arrow-alt-circle-down"></i></button><button type="button" class="btn icon up"><i class="fas fa-arrow-alt-circle-up"></i></button></li>
-                    }
-                </ul>
+                
+                    <ul class="list-group">
+                        @foreach (Gift gift in Model.Gifts)
+                        {
+                            <li class="list-group-item" >@gift.Name<a href="/List?handler=Remove&id=@gift.idGifts" class="button btn icon delete"><i class="fas fa-times-circle"></i></a><button class="btn icon down" type="button"><i class="fas fa-arrow-alt-circle-down"></i></button><button type="button" class="btn icon up"><i class="fas fa-arrow-alt-circle-up"></i></button></li>
+                        }
+                    </ul>
             </div>
             <div class="col-3"></div>
         </div>
     </div>
+    
+
 }
 else
 {
@@ -60,6 +71,20 @@ else
     </div>
 }
 
+@section Scripts
+{
+    <script>
+        function test(int)
+        {
+            test.ajax({
+                url: "List/Remove",
+                type: "POST",
+                data: int,
+                
+            })
+        }
+    </script>
+}
 
 
 @* <li class="list-group-item"><input class="form-control" name="itemInput" type="text"><button class="btn btn-info btn-lg confirm" type="button">Confirm item name</button><button class="btn icon delete" type="button"><i class="fas fa-times-circle"></i></button><button class="btn icon down" type="button"><i class="fas fa-arrow-alt-circle-down"></i></button><button type="button" class="btn icon up"><i class="fas fa-arrow-alt-circle-up"></i></button></li> *@

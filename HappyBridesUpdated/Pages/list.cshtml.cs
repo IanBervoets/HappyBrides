@@ -18,7 +18,12 @@ public class GiftsList : PageModel
 
     public List<Gift> Gifts = new List<Gift>();
     
+    [BindProperty, Required]
+    public int currentGift {get; set;}
+    
     public bool IsBride { get; set; }
+
+    public bool test;
     
     public void OnGet()
     {
@@ -28,10 +33,6 @@ public class GiftsList : PageModel
         }
 
         IsBride = CheckIsBride();
-        //string test = HttpContext.Session.GetString("IsBride");
-
-        
-        Gifts = _giftRepository.GetGifts();
     }
     
     public void OnPostAdd()
@@ -48,7 +49,7 @@ public class GiftsList : PageModel
             {
                 gift.Priority = 1;
             }
-            gift.UserId = int.Parse(HttpContext.Session.GetString("ID"));
+            gift.idUsers = int.Parse(HttpContext.Session.GetString("ID"));
             _giftRepository.AddGift(gift);
             Gifts.Add(gift);
         }
@@ -58,6 +59,17 @@ public class GiftsList : PageModel
         }
     }
 
+    public void OnGetRemove(int id)
+    {
+        _giftRepository.RemoveGift(id);
+        LoadGifts();
+    }
+
+    public void OnGetEdit()
+    {
+        
+    }
+
     public bool CheckIsBride()
     {
         if (HttpContext.Session.GetString("IsBride") == "true")
@@ -65,5 +77,11 @@ public class GiftsList : PageModel
             return true;
         }
         return false;
+    }
+
+    public void LoadGifts()
+    {
+        Gifts.Clear();
+        Gifts = _giftRepository.GetGifts(int.Parse(HttpContext.Session.GetString("ID")));
     }
 }
