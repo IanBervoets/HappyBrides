@@ -18,9 +18,6 @@ public class GiftsList : PageModel
 
     public List<Gift> Gifts = new List<Gift>();
     
-    [BindProperty, Required]
-    public int currentGift {get; set;}
-    
     public bool IsBride { get; set; }
 
     public bool test;
@@ -37,6 +34,7 @@ public class GiftsList : PageModel
     
     public void OnPostAdd()
     {
+        LoadGifts();
         if (ModelState.IsValid)
         {
             Gift gift = new Gift();
@@ -47,7 +45,7 @@ public class GiftsList : PageModel
             }
             else
             {
-                gift.Priority = 1;
+                gift.Priority = 0;
             }
             gift.idUsers = int.Parse(HttpContext.Session.GetString("ID"));
             _giftRepository.AddGift(gift);
@@ -65,9 +63,30 @@ public class GiftsList : PageModel
         LoadGifts();
     }
 
-    public void OnGetEdit()
+    public void OnGetEdit(int priority, int id, string direction)
     {
-        
+        LoadGifts();
+        if (direction == "down")
+        {
+            Gift downGift = Gifts[priority];
+            Gift upGift = Gifts[priority + 1];
+            downGift.Priority++;
+            upGift.Priority--;
+            _giftRepository.UpdateGift(downGift);
+            _giftRepository.UpdateGift(upGift);
+            LoadGifts();
+        }
+
+        if (direction == "up")
+        {
+            Gift upGift = Gifts[priority];
+            Gift downGift = Gifts[priority - 1];
+            upGift.Priority--;
+            downGift.Priority++;
+            _giftRepository.UpdateGift(upGift);
+            _giftRepository.UpdateGift(downGift);
+            LoadGifts();
+        }
     }
 
     public bool CheckIsBride()
@@ -83,5 +102,6 @@ public class GiftsList : PageModel
     {
         Gifts.Clear();
         Gifts = _giftRepository.GetGifts(int.Parse(HttpContext.Session.GetString("ID")));
+        Gifts = Gifts.OrderBy(g => g.Priority).ToList();
     }
 }

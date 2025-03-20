@@ -43,7 +43,7 @@
                     <ul class="list-group">
                         @foreach (Gift gift in Model.Gifts)
                         {
-                            <li class="list-group-item" >@gift.Name<a href="/List?handler=Remove&id=@gift.idGifts" class="button btn icon delete"><i class="fas fa-times-circle"></i></a><button class="btn icon down" type="button"><i class="fas fa-arrow-alt-circle-down"></i></button><button type="button" class="btn icon up"><i class="fas fa-arrow-alt-circle-up"></i></button></li>
+                            <li class="list-group-item">@gift.Name<a href="/List?handler=Remove&id=@gift.idGifts" class="button btn icon delete"><i class="fas fa-times-circle"></i></a><a href="/List?handler=Edit&priority=@gift.Priority&id=@gift.idGifts&direction=down" class="btn icon down button"><i class="fas fa-arrow-alt-circle-down"></i></a><a href="/List?handler=Edit&priority=@gift.Priority&id=@gift.idGifts&direction=up" class="btn icon up button"><i class="fas fa-arrow-alt-circle-up"></i></a></li>
                         }
                     </ul>
             </div>
@@ -70,21 +70,5 @@ else
         </div>
     </div>
 }
-
-@section Scripts
-{
-    <script>
-        function test(int)
-        {
-            test.ajax({
-                url: "List/Remove",
-                type: "POST",
-                data: int,
-                
-            })
-        }
-    </script>
-}
-
 
 @* <li class="list-group-item"><input class="form-control" name="itemInput" type="text"><button class="btn btn-info btn-lg confirm" type="button">Confirm item name</button><button class="btn icon delete" type="button"><i class="fas fa-times-circle"></i></button><button class="btn icon down" type="button"><i class="fas fa-arrow-alt-circle-down"></i></button><button type="button" class="btn icon up"><i class="fas fa-arrow-alt-circle-up"></i></button></li> *@

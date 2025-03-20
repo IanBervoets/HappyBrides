@@ -24,4 +24,10 @@ public class GiftRepository
         using var connection = _connectRepository.Connect();
         connection.Execute("DELETE FROM Gifts WHERE idGifts = @idGifts", param: new{@idGifts = id});
     }
+
+    public void UpdateGift(Gift gift)
+    {
+        using var connection = _connectRepository.Connect();
+        connection.Execute("UPDATE Gifts SET priority = @priority WHERE idGifts = @idGifts AND idUsers = @idUsers", param: new{@priority = gift.Priority, @idGifts = gift.idGifts, @idUsers = gift.idUsers});
+    }
 }
