@@ -34,6 +34,11 @@ public class register : PageModel
     
     private static Random _random = new Random();
 
+    /// <summary>
+    /// Creates string containing a random set of characters
+    /// </summary>
+    /// <param name="length">How many characters should be generated</param>
+    /// <returns>A string containing a random set of characters</returns>
     public static string RandomString(int length)
     {
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -41,6 +46,10 @@ public class register : PageModel
             .Select(s => s[_random.Next(s.Length)]).ToArray());
     }
 
+    /// <summary>
+    /// Creates a new random key and checks if there isn't a duplicate in the database
+    /// </summary>
+    /// <returns>A unique random string</returns>
     public static string CreateKey()
     {
         string keyString = RandomString(8);
@@ -58,6 +67,9 @@ public class register : PageModel
         
     }
 
+    /// <summary>
+    /// Registers a new account to the database
+    /// </summary>
     public void OnPost()
     {
         bool isRegistered = RegisterRepository.EmailNotRegistered(Email);

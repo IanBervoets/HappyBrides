@@ -19,6 +19,7 @@ public class GiftsList : PageModel
     public List<Gift> Gifts = new List<Gift>();
     
     public bool IsBride { get; set; }
+    public string KeyString { get; set; }
 
     public bool test;
     
@@ -32,6 +33,9 @@ public class GiftsList : PageModel
         IsBride = CheckIsBride();
     }
     
+    /// <summary>
+    /// Adds a new gift to the database
+    /// </summary>
     public void OnPostAdd()
     {
         LoadGifts();
@@ -57,13 +61,22 @@ public class GiftsList : PageModel
         }
     }
 
+    /// <summary>
+    /// Removes a gift from the database
+    /// </summary>
+    /// <param name="id">The id of the gift that has to be removed</param>
     public void OnGetRemove(int id)
     {
         _giftRepository.RemoveGift(id);
         LoadGifts();
     }
 
-    public void OnGetEdit(int priority, int id, string direction)
+    /// <summary>
+    /// Changes the priority order of the gifts
+    /// </summary>
+    /// <param name="priority">The priority of the gift</param>
+    /// <param name="direction">Whether the priority of the gift should be lowered or increased</param>
+    public void OnGetEdit(int priority, string direction)
     {
         LoadGifts();
         if (direction == "down")
@@ -89,15 +102,23 @@ public class GiftsList : PageModel
         }
     }
 
+    /// <summary>
+    /// Checks if the user is hosting a wedding
+    /// </summary>
+    /// <returns>A boolean that is true if the user is hosting a wedding</returns>
     public bool CheckIsBride()
     {
         if (HttpContext.Session.GetString("IsBride") == "true")
         {
+            KeyString = HttpContext.Session.GetString("KeyString").TrimEnd('"').TrimStart('"');
             return true;
         }
         return false;
     }
 
+    /// <summary>
+    /// Reloads the list with gifts
+    /// </summary>
     public void LoadGifts()
     {
         Gifts.Clear();

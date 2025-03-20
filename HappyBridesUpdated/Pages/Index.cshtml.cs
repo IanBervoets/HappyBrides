@@ -24,6 +24,9 @@ public class IndexModel : PageModel
         
     }
 
+    /// <summary>
+    /// Creates a session with a userid and whether the user is hosting a wedding or attending one
+    /// </summary>
     public void OnPost()
     {
         if (ModelState.IsValid && _loginRepository.CheckAccount(Email, Password))
@@ -34,6 +37,7 @@ public class IndexModel : PageModel
             if (user.IsBride)
             {
                 HttpContext.Session.SetString("IsBride", "true");
+                HttpContext.Session.SetString("KeyString", JsonConvert.SerializeObject(user.KeyString));
             }
             else
             {
