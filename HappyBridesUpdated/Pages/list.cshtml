@@ -5,11 +5,12 @@
 <link rel="stylesheet" href="css/list.css"/>
 
 @{
-    Model.IsBride = Model.CheckIsBride();
+    Model.CheckIsBride();
     Model.LoadGifts();
 }
-@if (Model.IsBride)
+@if (Model.IsBride && Model.OwnsList())
 {
+    Model.LoadGifts();
     <div class="container-fluid">
         <div class="row">
             <div class="col-5"></div>
@@ -55,8 +56,6 @@
             <div class="col-3"></div>
         </div>
     </div>
-    
-
 }
 else
 {
@@ -67,7 +66,7 @@ else
                 <ul>
                     @foreach (Gift gift in Model.Gifts)
                     {
-                        <li class="list-group-item">' + @gift.Name + '@*Add buying option*@</li>
+                        <li class="list-group-item"> @gift.Name@*Add buying option*@</li>
                     }
                 </ul>
             </div>

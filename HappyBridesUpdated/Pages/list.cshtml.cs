@@ -20,8 +20,7 @@ public class GiftsList : PageModel
     
     public bool IsBride { get; set; }
     public string KeyString { get; set; }
-
-    public bool test;
+    
     
     public void OnGet()
     {
@@ -30,7 +29,7 @@ public class GiftsList : PageModel
             Response.Redirect("/Index");
         }
 
-        IsBride = CheckIsBride();
+        CheckIsBride();
     }
     
     /// <summary>
@@ -38,6 +37,7 @@ public class GiftsList : PageModel
     /// </summary>
     public void OnPostAdd()
     {
+        CheckIsBride();
         LoadGifts();
         if (ModelState.IsValid)
         {
@@ -106,14 +106,17 @@ public class GiftsList : PageModel
     /// Checks if the user is hosting a wedding
     /// </summary>
     /// <returns>A boolean that is true if the user is hosting a wedding</returns>
-    public bool CheckIsBride()
+    public void CheckIsBride()
     {
         if (HttpContext.Session.GetString("IsBride") == "true")
         {
-            KeyString = HttpContext.Session.GetString("KeyString").TrimEnd('"').TrimStart('"');
-            return true;
+            KeyString = HttpContext.Session.GetString("Key");
+            IsBride = true;
         }
-        return false;
+        else
+        {
+            IsBride = false;
+        }
     }
 
     /// <summary>
@@ -122,7 +125,23 @@ public class GiftsList : PageModel
     public void LoadGifts()
     {
         Gifts.Clear();
-        Gifts = _giftRepository.GetGifts(int.Parse(HttpContext.Session.GetString("ID")));
+        if (IsBride == true)
+        {
+            Gifts = _giftRepository.GetOwnGifts(int.Parse(HttpContext.Session.GetString("ID")));
+        }
+        else
+        {
+            Gifts = _giftRepository.GetOtherGifts(HttpContext.Session.GetString("Key"));
+        }
         Gifts = Gifts.OrderBy(g => g.Priority).ToList();
+    }
+
+    public bool OwnsList()
+    {
+        if (_giftRepository.OwnsList(HttpContext.Session.GetString("Key"), int.Parse(HttpContext.Session.GetString("ID"))))
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -79,7 +79,15 @@ public class register : PageModel
         {
             int user = RegisterRepository.RegisterAccount(Name, Email, IsBride, PassWD, CreateKey());
             HttpContext.Session.SetString("ID", JsonConvert.SerializeObject(user));
-            Response.Redirect("List");
+            if (IsBride == 1)
+            {
+                HttpContext.Session.SetString("IsBride", "true");
+                Response.Redirect("List");
+            }
+            else
+            {
+                Response.Redirect("Home");
+            }
         }
         else
         {

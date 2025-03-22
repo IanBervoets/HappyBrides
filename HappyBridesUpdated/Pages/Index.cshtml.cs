@@ -37,7 +37,7 @@ public class IndexModel : PageModel
             if (user.IsBride)
             {
                 HttpContext.Session.SetString("IsBride", "true");
-                HttpContext.Session.SetString("KeyString", JsonConvert.SerializeObject(user.KeyString));
+                HttpContext.Session.SetString("Key", JsonConvert.SerializeObject(user.KeyString).TrimEnd('"').TrimStart('"'));
             }
             else
             {

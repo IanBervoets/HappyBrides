@@ -1,11 +1,19 @@
+using System.ComponentModel.DataAnnotations;
+using HappyBridesUpdated.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HappyBridesUpdated.Pages;
 
 public class Home : PageModel
 {
-    public bool IsBride = false;
+    private UserRepository _userRepository = new UserRepository();
     
+    public bool IsBride = false;
+
+    [BindProperty, Required] 
+    public string Key { get; set; }
+
     public void OnGet()
     {
         if (HttpContext.Session.GetString("ID") == null)
@@ -13,20 +21,27 @@ public class Home : PageModel
             Response.Redirect("/Index");
         }
         
-        string test = HttpContext.Session.GetString("IsBride");
         if (HttpContext.Session.GetString("IsBride") == "true")
         {
             IsBride = true;
         }
     }
 
-    public void OnPostGoToList()
+    public void OnPostGoToOwnList()
     {
         Response.Redirect("/List");
     }
 
-    public void OnPostStartList()
+    public void OnPostGoToOtherList()
     {
+        HttpContext.Session.SetString("Key", Key);
+        Response.Redirect("/List");
+    }
+
+    public void OnPostBecomeBride()
+    {
+        HttpContext.Session.SetString("IsBride", "true");
+        _userRepository.ChangeBrideStatus(int.Parse(HttpContext.Session.GetString("ID")), 1);
         Response.Redirect("/List");
     }
 }

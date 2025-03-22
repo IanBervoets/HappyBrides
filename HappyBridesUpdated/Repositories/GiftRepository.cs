@@ -7,10 +7,17 @@ public class GiftRepository
 {
     private static ConnectRepository _connectRepository = new ConnectRepository();
 
-    public List<Gift> GetGifts(int userId)
+    public List<Gift> GetOwnGifts(int userId)
     {
         using var connection = _connectRepository.Connect();
         return connection.Query<Gift>("SELECT * FROM Gifts where idUsers = @userId", param: new{@userId = userId}).ToList();
+    }
+
+    public List<Gift> GetOtherGifts(string key)
+    {
+        using var connection = _connectRepository.Connect();
+        int id = connection.QuerySingle<int>("SELECT idUsers FROM Users where keyString = @key", param: new {@key = key});
+        return connection.Query<Gift>("SELECT * FROM Gifts where idUsers = @id", param: new{@id = id}).ToList();
     }
     
     public void AddGift(Gift gift)
@@ -29,5 +36,15 @@ public class GiftRepository
     {
         using var connection = _connectRepository.Connect();
         connection.Execute("UPDATE Gifts SET priority = @priority WHERE idGifts = @idGifts AND idUsers = @idUsers", param: new{@priority = gift.Priority, @idGifts = gift.idGifts, @idUsers = gift.idUsers});
+    }
+
+    public bool OwnsList(string key, int id)
+    {
+        using var connection = _connectRepository.Connect();
+        if (connection.QuerySingle("SELECT COUNT(1) FROM Users WHERE keyString = @key AND idUsers = @id", param: new {@key = key, @id = id}) != null)
+        {
+            return true;
+        }
+        return false;
     }
 }
