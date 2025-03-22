@@ -10,6 +10,7 @@ namespace HappyBridesUpdated.Pages;
 public class GiftsList : PageModel
 {
     private GiftRepository _giftRepository = new GiftRepository();
+    private UserRepository _userRepository = new UserRepository();
     
     public string Message { get; set; }
     
@@ -125,7 +126,7 @@ public class GiftsList : PageModel
     public void LoadGifts()
     {
         Gifts.Clear();
-        if (IsBride == true)
+        if (IsBride && OwnsList())
         {
             Gifts = _giftRepository.GetOwnGifts(int.Parse(HttpContext.Session.GetString("ID")));
         }
@@ -143,5 +144,10 @@ public class GiftsList : PageModel
             return true;
         }
         return false;
+    }
+
+    public string getBrideName()
+    {
+        return _userRepository.getBrideName(HttpContext.Session.GetString("Key"));
     }
 }

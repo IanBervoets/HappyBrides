@@ -41,7 +41,7 @@ public class GiftRepository
     public bool OwnsList(string key, int id)
     {
         using var connection = _connectRepository.Connect();
-        if (connection.QuerySingle("SELECT COUNT(1) FROM Users WHERE keyString = @key AND idUsers = @id", param: new {@key = key, @id = id}) != null)
+        if (connection.Execute("SELECT 1 FROM Users WHERE keyString = @key AND idUsers = @id", param: new {@key = key, @id = id}) == 1)
         {
             return true;
         }
