@@ -10,6 +10,11 @@
     font-size: 2rem;
 }
 
+.boughtItems{
+    background: lightgray;
+    color: lightslategray;
+}
+
 .icon{
     float: right;
     vertical-align: center;
@@ -35,4 +40,11 @@
     border-radius: 5px;
     padding: 1rem;
     margin-bottom: 3.5rem;
+}
+
+.BoughtByName{
+    background: lightgray;
+    text-align: center;
+    float: right;
+    border-radius: 5px;
 }

@@ -72,6 +72,12 @@ public class GiftsList : PageModel
         LoadGifts();
     }
 
+    public void OnGetBuy(int id)
+    {
+        string name = _userRepository.getBrideNameByUserId(int.Parse(HttpContext.Session.GetString("ID")));
+        _giftRepository.BuyGift(id, 1, name);
+    }
+
     /// <summary>
     /// Changes the priority order of the gifts
     /// </summary>
@@ -137,6 +143,10 @@ public class GiftsList : PageModel
         Gifts = Gifts.OrderBy(g => g.Priority).ToList();
     }
 
+    /// <summary>
+    /// Checks if the key given for gifts list matches the key of the current login
+    /// </summary>
+    /// <returns>A boolean that is true if given key matches the key of the given id</returns>
     public bool OwnsList()
     {
         if (_giftRepository.OwnsList(HttpContext.Session.GetString("Key"), int.Parse(HttpContext.Session.GetString("ID"))))
@@ -148,6 +158,6 @@ public class GiftsList : PageModel
 
     public string getBrideName()
     {
-        return _userRepository.getBrideName(HttpContext.Session.GetString("Key"));
+        return _userRepository.getBrideNameByKey(HttpContext.Session.GetString("Key"));
     }
 }

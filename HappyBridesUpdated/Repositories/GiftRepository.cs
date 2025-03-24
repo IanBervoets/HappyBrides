@@ -38,13 +38,18 @@ public class GiftRepository
         connection.Execute("UPDATE Gifts SET priority = @priority WHERE idGifts = @idGifts AND idUsers = @idUsers", param: new{@priority = gift.Priority, @idGifts = gift.idGifts, @idUsers = gift.idUsers});
     }
 
+    public void BuyGift(int idGifts, int isBought, string name)
+    {
+        using var connection = _connectRepository.Connect();
+        connection.Execute("UPDATE Gifts SET isBought = @isBought, boughtBy = @name WHERE idGifts = @idGifts", param: new{@isBought = isBought, @idGifts = idGifts, @name = @name});
+    }
+
     public bool OwnsList(string key, int id)
     {
         using var connection = _connectRepository.Connect();
-        if (connection.Execute("SELECT 1 FROM Users WHERE keyString = @key AND idUsers = @id", param: new {@key = key, @id = id}) == 1)
-        {
-            return true;
-        }
-        return false;
+
+        return connection.QuerySingle<int>("SELECT 1 FROM Users WHERE keyString = @key AND idUsers = @id",
+            param: new { @key = key, @id = id }) == 1;
+
     }
 }
