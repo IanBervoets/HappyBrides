@@ -1,0 +1,91 @@
+@page
+@model HappyBridesUpdated.Pages.register
+
+@{
+    
+}
+
+<link rel="stylesheet" href="css/register.css"/>
+
+
+
+<form method="post">
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <label class="inputs" for="name">Your names</label>
+                <input type="text" asp-for="Name" class="form-control" id="name"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <label class="inputs" for="email">E-mail</label>
+            <input type="email" class="form-control" id="email" asp-for="Email"/>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <label class="inputs" for="isBride">Are you hosting the wedding or were you invited to someone else's?</label>
+            <select id="isBride" class="form-select" asp-for="IsBride">
+                <option value="1">I am hosting a wedding</option>
+                <option value="0">I am going to someone else's wedding</option>
+            </select>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <label class="inputs" for="passWD">Password</label>
+            <input type="password" class="form-control" id="passWD" asp-for="PassWD"/>
+            <span asp-validation-for="PassWD" class="text-danger"></span>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <label class="inputs" for="passConfirm">Confirm your password</label>
+            <input type="password" class="form-control" id="passConfirm" asp-for="PassConfirm"/>
+            <span asp-validation-for="PassConfirm" class="text-danger"></span>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div>
+        <div class="row">
+            <div class="col-5"></div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-info btn-lg w-100">Registreren</button>
+            </div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-5"></div>
+            <div class="col-4 text-danger">@Model.Message</div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+</div>
+</form>

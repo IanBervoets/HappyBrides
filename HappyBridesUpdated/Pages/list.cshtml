@@ -1,0 +1,93 @@
+@page
+@using HappyBridesUpdated.Model
+@model HappyBridesUpdated.Pages.GiftsList
+
+<link rel="stylesheet" href="css/list.css"/>
+
+@{
+    Model.CheckIsBride();
+    Model.LoadGifts();
+}
+@if (Model.IsBride && Model.OwnsList())
+{
+    Model.LoadGifts();
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-5"></div>
+            <div class="col-2 " style="text-align: center">
+                <h2>Your list key</h2>
+            </div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-5"></div>
+            <h2 class="col-2 KeyString">@Model.KeyString</h2>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-3"></div>
+            <span class="col-6 list">
+                <form method="post">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <input class="form-control" asp-for="Name" @*name="itemInput"*@ type="text">
+                            @*div class="text-danger error">@Model.Message</div>*@
+                            <button class="btn btn-info btn-lg confirm" asp-page-handler="Add" type="submit">Add item</button>
+                        </li>
+                    </ul>
+                </form>
+            </span>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 list">
+
+                <ul class="list-group">
+                    @foreach (Gift gift in Model.Gifts)
+                    {
+                        if (!gift.IsBought)
+                        {
+                            <li class="list-group-item">@gift.Name<a href="/List?handler=Remove&id=@gift.idGifts" class="button btn icon delete"><i class="fas fa-times-circle"></i></a><a href="/List?handler=Edit&priority=@gift.Priority&direction=down" class="btn icon down button"><i class="fas fa-arrow-alt-circle-down"></i></a><a href="/List?handler=Edit&priority=@gift.Priority&direction=up" class="btn icon up button"><i class="fas fa-arrow-alt-circle-up"></i></a></li>
+                        }
+                        else
+                        {
+                            <li class="list-group-item boughtItems">@gift.Name<h2 class="BoughtByName">@gift.BoughtBy</h2></li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-5"></div>
+            <h2 class="col-2 KeyString">@Model.getBrideName()</h2>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <ul>
+                    @foreach (Gift gift in Model.Gifts)
+                    {
+                        if (!gift.IsBought)
+                        {
+                            <li class="list-group-item">@gift.Name<a href="/List?handler=Buy&id=@gift.idGifts" class="button btn btn-info btn-lg icon">Buy</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+}
+
+@* <li class="list-group-item"><input class="form-control" name="itemInput" type="text"><button class="btn btn-info btn-lg confirm" type="button">Confirm item name</button><button class="btn icon delete" type="button"><i class="fas fa-times-circle"></i></button><button class="btn icon down" type="button"><i class="fas fa-arrow-alt-circle-down"></i></button><button type="button" class="btn icon up"><i class="fas fa-arrow-alt-circle-up"></i></button></li> *@

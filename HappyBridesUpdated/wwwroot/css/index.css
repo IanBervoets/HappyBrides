@@ -1,0 +1,21 @@
+.IDinput{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.passWD{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.registerLink{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.loginButton{
+    text-align: center;
+    font-size: 1.5rem;
+}
